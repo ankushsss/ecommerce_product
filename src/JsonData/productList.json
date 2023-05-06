@@ -1,0 +1,66 @@
+[
+    {
+      "checkbox": "1",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Dress_Shirt_Fitting_on_dummy_Front.JPG",
+        "name": "Blue Jacket",
+        "description":"h",
+      "category": "Cloths",
+      "price": "$30",
+      "quantity": "10",
+      "status": "In stock",
+      "compair":"1100",
+      "costperitem":"300",
+      "taxrate":"200",
+
+      "variants":[
+        {
+          "Variant":"Blue",
+          "Price":"$20",
+          "Stockkeepingunit":"20"
+      }
+      ]
+    },
+    {
+      "checkbox": "2",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdBPrJxVGq8BksyP6u1j67mO1LxMzjUwxQFw&amp;usqp=CAU",
+        "name": "Blue Sneaker",
+        "description":"g",
+
+      "category": "Shoes",
+      "price": "$30",
+      "quantity": "10",
+      "status": "In stock",
+      "compair":"50",
+      "costperitem":"400",
+      "taxrate":"100",
+      "variants":[
+        {
+          "Variant":"Blue",
+          "Price":"$10",
+          "Stockkeepingunit":"10"
+      }
+      ]
+    },
+    {
+      "checkbox": "3",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIUfA2o1Y0fQWyw8tyHnfPwZf3PzLyEicNBA&amp;usqp=CAU",
+        "name": "Gray Hoodies",
+        "description":"g",
+
+      "category": "Cloths",
+      "price": "$30",
+      "quantity": "10",
+      "status": "In stock",
+      "compair":"200",
+      "costperitem":"100",
+      "taxrate":"21",
+      "variants":[
+        {
+          "Variant":"Grey",
+          "Price":"$20",
+          "Stockkeepingunit":"10"
+      }
+      ]
+    }
+  ]
+  
