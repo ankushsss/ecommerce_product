@@ -105,11 +105,11 @@ const Action = ({product})=>{
                                   }
                             }}>
                                <option selected>All</option>
-                                <option value="Cloths">Cloths</option>
-                                <option value="Bags">Bags</option>
-                                <option value="Shoes">Shoes</option>
-                                <option value="Watches">Watches</option>
-                                <option value="Devices">Devices</option>
+                                <option value="clothe">Clothe</option>
+                                <option value="bags">Bags</option>
+                                <option value="shoes">Shoes</option>
+                                <option value="watches">Watches</option>
+                                <option value="device">Devices</option>
                             </select>
                          </div>
                          <div className="filter_btn_wrapper">

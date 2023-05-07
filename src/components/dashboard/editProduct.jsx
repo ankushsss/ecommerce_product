@@ -436,11 +436,11 @@ const EditProduct = () => {
                               id="productName"
                             >
                               <option value="">Select</option>
-                              <option value="Cloths">Cloths</option>
-                              <option value="Bags">Bags</option>
-                              <option value="Shoes">Shoes</option>
-                              <option value="Watches">Watches</option>
-                              <option value="Devices">Devices</option>
+                              <option value="clothe">Cloths</option>
+                              <option value="bags">Bags</option>
+                              <option value="shoes">Shoes</option>
+                              <option value="watches">Watches</option>
+                              <option value="device">Device</option>
                             </select>
                             {formik.touched.category &&
                             formik.errors.category ? (
