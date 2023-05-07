@@ -7,7 +7,7 @@ const VariantForm = ({ variant, variants, setVariants, index }) => {
   const [singleVariant, setSingleVariant] = useState(variant);
 
   useEffect(() => {
-    console.log(variants);
+   
   }, [singleVariant]);
 
   return (
@@ -23,14 +23,14 @@ const VariantForm = ({ variant, variants, setVariants, index }) => {
                 type="text"
                 name="variant"
                 className="form-control"
-                id="productName"
+                id="variant"
                 onChange={(e) => {
                   setSingleVariant(e.target.value);
-                  variants[index].Variant = e.target.value;
+                  variants[index].variant = e.target.value;
 
                   setVariants([...variants]);
                 }}
-                value={singleVariant.Variant}
+                value={singleVariant.variant}
               />
             </div>
           </div>
@@ -41,16 +41,16 @@ const VariantForm = ({ variant, variants, setVariants, index }) => {
               </label>
               <input
                 type="text"
-                name="variantPrice"
+                name="price"
                 className="form-control"
-                id="productName"
+                id="price"
                 onChange={(e) => {
                   setSingleVariant(e.target.value);
-                  variants[index].Price = e.target.value;
+                  variants[index].price = e.target.value;
 
                   setVariants([...variants]);
                 }}
-                value={singleVariant.Price}
+                value={singleVariant.price}
               />
             </div>
           </div>
@@ -66,11 +66,11 @@ const VariantForm = ({ variant, variants, setVariants, index }) => {
                 id="productName"
                 onChange={(e) => {
                   setSingleVariant(e.target.value);
-                  variants[index].Stockkeepingunit = e.target.value;
+                  variants[index].stock = e.target.value;
 
                   setVariants([...variants]);
                 }}
-                value={singleVariant.Stockkeepingunit}
+                value={singleVariant.stock}
               />
             </div>
           </div>
@@ -97,27 +97,27 @@ const EditProduct = () => {
     JSON.parse(localStorage.getItem("products"))[id - 1]
   );
   const [variants, setVariants] = useState(
-    JSON.parse(localStorage.getItem("products"))[id - 1].variants
+    JSON.parse(localStorage.getItem("products"))[id - 1].variation
   );
 
   useEffect(() => {
     setProduct(JSON.parse(localStorage.getItem("products"))[id - 1]);
-    setVariants(JSON.parse(localStorage.getItem("products"))[id - 1].variants);
+    setVariants(JSON.parse(localStorage.getItem("products"))[id - 1].variation);
   }, []);
 
   const formik = useFormik({
     initialValues: {
-      checkbox: product.checkbox ? product.checkbox : "",
-      image: product.image ? product.image : "",
-      name: product.name ? product.name : "",
+      id: product.id ? product.id : "",
+      productImage: product.productImage ? product.productImage : "",
+      productName: product.productName ? product.productName : "",
       category: product.category ? product.category : "",
       price: product.price ? product.price : "",
       description: product.description ? product.description : "",
-      compare: product.compare ? product.compare : "",
-      costperitem: product.costperitem ? product.costperitem : "",
-      taxrate: product.taxrate ? product.taxrate : "",
+      compare:product.compare ? product.compare : "",
+      costperitem:  product.costperitem ? product.costperitem :"",
+      taxrate:  product.taxrate ? product.taxrate :"",
       status:product.status ? product.status : "",
-      Variants: product.Variants ? product.Variants : [],
+      variation: product.variation ? product.variation : [],
     },
     enableReinitialize: true,
     onSubmit: (values) => {
@@ -126,9 +126,9 @@ const EditProduct = () => {
         ? JSON.parse(localStorage.getItem("products"))
         : [];
       data[id - 1] = {
-        checkbox: values.checkbox,
-        image: values.image,
-        name: values.name,
+        id: values.id,
+        productImage: values.productImage,
+        productName: values.productName,
         category: values.category,
         description: values.description,
         price: values.price,
@@ -137,15 +137,15 @@ const EditProduct = () => {
         taxrate: values.taxrate,
         quantity: values.quantity,
         status: values.status,
-        variants: variants,
+        variation: variants,
       };
       localStorage.setItem("products", JSON.stringify(data));
       alert("Data updated Successfully");
     },
     validate: (values) => {
       let errors = {};
-      if (!values.name) {
-        errors.name = "This is a required field";
+      if (!values.productName) {
+        errors.productName = "This is a required field";
       }
       if (!values.description) {
         errors.description = "Description required";
@@ -190,7 +190,7 @@ const EditProduct = () => {
                 </div>
                 <input
                   type="text"
-                  value={product.checkbox}
+                  value={product.id}
                   className="form-control input_modify"
                   placeholder="Search"
                 />
@@ -284,15 +284,15 @@ const EditProduct = () => {
                         </label>
                         <input
                           type="text"
-                          name="name"
+                          name="productName"
                           className="form-control"
                           id="name"
                           onChange={formik.handleChange}
-                          value={formik.values.name}
+                          value={formik.values.productName}
                         />
-                        {formik.touched.name && formik.errors.name ? (
+                        {formik.touched.productName && formik.errors.productName ? (
                           <div style={{ color: "red", fontSize: "12px" }}>
-                            {formik.errors.name}
+                            {formik.errors.productName}
                           </div>
                         ) : null}
                       </div>
@@ -380,9 +380,9 @@ const EditProduct = () => {
                             </label>
                             <input
                               type="text"
-                              name="costPerItem"
+                              name="costperitem"
                               className="form-control"
-                              id="costPerItem"
+                              id="costperitem"
                               onChange={formik.handleChange}
                               value={formik.values.costperitem}
                             />
@@ -401,7 +401,7 @@ const EditProduct = () => {
                             </label>
                             <input
                               type="text"
-                              name="taxRate"
+                              name="taxrate"
                               className="form-control"
                               id="taxRate"
                               onChange={formik.handleChange}

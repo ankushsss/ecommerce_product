@@ -12,7 +12,6 @@ const LoginPage = () => {
     const [userData,setUserData]= useState(JSON.parse(localStorage.getItem('users')));
     const [alert,setAlert]=useState({open:false,massege:'',type:'success'});
     const navigate = useNavigate();
-    console.log(userData,'this is the data')
 
     const dispatch = useDispatch()
 
@@ -23,15 +22,15 @@ const LoginPage = () => {
           password:"",
         
         },onSubmit: (values) => {
-            console.log(values);
+
             let users=  userData.filter((user,index)=>{
-                console.log(user)
+             
                 return user.email == values.email
             })
 
             if(users.length == 1){
                 if(users[0].password==values.password){
-                    console.log("login sucessfull")
+                   
                     localStorage.setItem('token',process.env.REACT_APP_TOKEN)
                     setAlert({type:"success",open:true,message:'login successfull'})
                     dispatch(loginUserData({email:values.email,password:values.password}))
@@ -39,17 +38,17 @@ const LoginPage = () => {
 
                 }
                 else{
-                    console.log("wrong password")
+                  
                     setAlert({type:"error",open:true,message:'email and password wrong'})
                 }
             }
             else{
-                console.log("user not found")
+            
                 setAlert({type:"error",open:true,message:'User not found'})
 
             }
 
-            console.log(userData)
+          
             // const data = localStorage.getItem('users')?JSON.parse(localStorage.getItem('users')):[]
 
             // data.push({"email":values.email,"password":values.password})

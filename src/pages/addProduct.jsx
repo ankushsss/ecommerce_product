@@ -7,7 +7,7 @@ const VariantForm = ({ variant, variants, setVariants, index }) => {
   const [singleVariant, setSingleVariant] = useState(variant);
 
   useEffect(() => {
-    console.log(variants);
+
   }, [singleVariant]);
 
   return (
@@ -100,22 +100,23 @@ const AddProduct = () => {
   ]);
 
   const [products, setProducts] = useState(
-    JSON.parse(localStorage.getItem("products"))
+   JSON.parse(localStorage.getItem("products"))?JSON.parse(localStorage.getItem("products")):[]
   );
   const [active, setActive] = useState("general");
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("products"))) {
+      setProducts(JSON.parse(localStorage.getItem("products")))
     }
   }, []);
 
   const formik = useFormik({
     initialValues: {
-      checkbox: "",
-      image:
+      id: "",
+      productImage:
         "https://upload.wikimedia.org/wikipedia/commons/3/3d/Dress_Shirt_Fitting_on_dummy_Front.JPG",
       description: "",
-      name: "",
+      productName: "",
       category: "",
       price: "",
       quantity: "",
@@ -123,18 +124,18 @@ const AddProduct = () => {
       compare: "",
       costperitem: "",
       taxrate: "",
-      variants: [],
+      variation: [],
     },
     enableReinitialize: true,
     onSubmit: (values) => {
-      console.log(values, "the");
+
       let data = JSON.parse(localStorage.getItem("products"))
         ? JSON.parse(localStorage.getItem("products"))
         : [];
       data.push({
-        checkbox: products.length + 1,
-        image: values.image,
-        name: values.name,
+        id: products.length + 1,
+        productImage: values.productImage,
+        productName: values.productName,
         description: values.description,
         category: values.category,
         price: values.price,
@@ -143,15 +144,15 @@ const AddProduct = () => {
         costperitem: values.costperitem,
         taxrate: values.taxrate,
         status: values.status,
-        variants: variants,
+        variation: variants,
       });
       localStorage.setItem("products", JSON.stringify(data));
       alert("Product Added Sucessfully");
     },
     validate: (values) => {
       let errors = {};
-      if (!values.name) {
-        errors.name = "This is a required field";
+      if (!values.productName) {
+        errors.productName = "This is a required field";
       }
       if (!values.description) {
         errors.description = "Description required";
@@ -174,9 +175,7 @@ const AddProduct = () => {
       if (!values.taxrate) {
         errors.taxrate = "Please Select taxrate";
       }
-      if (!values.variants) {
-        errors.variant = "Please Select Variants";
-      }
+      
       return errors;
     },
   });
@@ -198,7 +197,7 @@ const AddProduct = () => {
                 </div>
                 <input
                   type="text"
-                  value={formik.checkbox}
+                  value={formik.id}
                   className="form-control input_modify"
                   placeholder="Search"
                 />
@@ -292,15 +291,15 @@ const AddProduct = () => {
                         </label>
                         <input
                           type="text"
-                          name="name"
+                          name="productName"
                           className="form-control"
                           id="name"
                           onChange={formik.handleChange}
-                          value={formik.values.name}
+                          value={formik.values.productName}
                         />
-                        {formik.touched.name && formik.errors.name ? (
+                        {formik.touched.productName && formik.errors.productName ? (
                           <div style={{ color: "red", fontSize: "12px" }}>
-                            {formik.errors.name}
+                            {formik.errors.productName}
                           </div>
                         ) : null}
                       </div>

@@ -14,7 +14,6 @@ var teamInitialState = {
     initialState: teamInitialState,
     reducers: {
         loginUserData:(state,action)=> {
-                console.log(action.payload)
                 state = action.payload
                 return action.payload
           }

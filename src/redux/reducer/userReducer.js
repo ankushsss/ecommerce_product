@@ -11,7 +11,7 @@ var userInitialState = []
     initialState: userInitialState,
     reducers: {
         userDataList:(state,action)=> {
-                console.log(action.payload)
+           
                 state = action.payload
                 return action.payload
           }

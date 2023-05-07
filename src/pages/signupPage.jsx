@@ -14,6 +14,7 @@ const SignupPage = () => {
 
     useEffect(()=>{
         setUserData(JSON.parse(localStorage.getItem('users')))
+
     },[])
 
     const formik = useFormik({
@@ -22,7 +23,7 @@ const SignupPage = () => {
           password:"",
           confirmpassword:""
         },onSubmit: (values) => {
-            console.log(values);
+       
             const data = localStorage.getItem('users')?JSON.parse(localStorage.getItem('users')):[]
 
             data.push({"email":values.email,"password":values.password})
